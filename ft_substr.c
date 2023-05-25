@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_main.c                                         :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 12:56:24 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/25 11:52:43 by mel-kouc         ###   ########.fr       */
+/*   Created: 2023/05/25 09:34:08 by mel-kouc          #+#    #+#             */
+/*   Updated: 2023/05/25 09:36:42 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-#include <stdio.h>
-#include <unistd.h>
 
-void	env_list(char **env)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int		i;
-	// int		equal;
-	// t_env	tmp;
+	char	*str;
+	size_t	i;
 
 	i = 0;
-	while (env[i])
+	if (s == NULL)
+		return (NULL);
+	if (start > ft_strlen(s))
+		return (ft_strdup(""));
+	if (ft_strlen(s) - start < len)
+		len = ft_strlen(s) - start;
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	while (i < len)
 	{
-		
+		str[i] = s[start];
 		i++;
+		start++;
 	}
+	str[i] = '\0';
+	return (str);
 }
-
-int	main(int argc, char **argv, char **envp)
-{
-	(void)argc;
-	(void)argv;
-	env_list(envp);
-}
-
-// int	main(void)
-// {
-// 	pid_t	pid;
-
-// 	pid = getpid();
-// 	printf("pid is: %d", pid);
-// }

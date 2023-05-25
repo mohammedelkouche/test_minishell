@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_main.c                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mel-kouc <mel-kouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 12:56:24 by mel-kouc          #+#    #+#             */
-/*   Updated: 2023/05/25 11:52:43 by mel-kouc         ###   ########.fr       */
+/*   Created: 2023/05/25 09:37:14 by mel-kouc          #+#    #+#             */
+/*   Updated: 2023/05/25 11:29:54 by mel-kouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
-#include <stdio.h>
-#include <unistd.h>
 
-void	env_list(char **env)
+int	ft_strchr(char *s, char c)
 {
-	int		i;
-	// int		equal;
-	// t_env	tmp;
+	int	i;
 
 	i = 0;
-	while (env[i])
+	if (s != NULL)
 	{
-		
-		i++;
+		while (s[i])
+		{
+			if (s[i] == c)
+				return (i);
+			i++;
+		}
 	}
+	return (-1);
 }
-
-int	main(int argc, char **argv, char **envp)
-{
-	(void)argc;
-	(void)argv;
-	env_list(envp);
-}
-
-// int	main(void)
-// {
-// 	pid_t	pid;
-
-// 	pid = getpid();
-// 	printf("pid is: %d", pid);
-// }
